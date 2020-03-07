@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax for IM</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <h1>ajax 聊天</h1>
+        <div>
+            <input v-model="mes">
+            <button @click="send">发送</button>
+            <button @click="clear">清空</button>
+            <ol>
+                <li v-for="item in list">{{item}}</li>
+            </ol>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    <script>
+        const host = 'http://localhost:3000';
+        let app = new Vue({
+            el: '#app',
+            data: {
+                mes: '',
+                list: []
+            },
+            methods: {
+                send: function () {
+                    let res = axios.post(`${host}/send`, {
+                        mes: this.mes
+                    }).then(res => {
+                        this.list = res.data;
+                        this.mes = '';
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                },
+                clear: function () {
+                    let res = axios.post(`${host}/clear`).then(res => {
+                        this.list = res.data;
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }
+            },
+            mounted: function () {
+                window.timer = setInterval(() => {
+                    let res = axios.get(`${host}/list`).then(res => {
+                        this.list = res.data;
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }, 1000)
+            }
+        })
+    </script>
+</body>
+
+</html>
