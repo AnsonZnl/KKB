@@ -29,6 +29,29 @@
 - Buffer 用来处理二进制数据 
 - `toString('utf-8');` 转码默认是`utf-8` 
 
+### events
+- [Node-Events参考文档](http://nodejs.cn/api/events.html)
+- [Node 模块之事件(events)详解](https://www.jianshu.com/p/152fddf0628c)
+events对象，又称为“事件触发器”.它是一种广泛用于异步编程的模式，是回调函数的事件化，又称“发布订阅模式”， events就是发布订阅模式的一个简单的实现。
+这个模块比前端浏览器中DOM模块要简单的多，没有冒泡，捕捉等事件传递的方法。
+它具有，addListener/on()、once()、removeListener()、removellListeners()和emit()等基本的事件监听模式的方法实现。
+Node中的对象模型就是我们常见的订阅发布模式，Node.js核心API都采用了异步事件的驱动，所有可能触发事件的对象都是一个继承自EventEmitter类的子类实例对象，简单来说，就是Node帮我们实现了一个订阅发布模式。
+我的理解：
+前端浏览器的方法调用常用的大致分为两类
+- 来自页面的事件，如：click、input、change等
+- 使用ajax异步请求时候的异步调用，异步回调函数等。
+这些都是定义好的函数，然后通过这些操作去触发提前定义好的函数，和events如出一辙。
+例子：
+```
+//订阅
+emitter.on('test',(mes)=>{
+    consloe.log(`hello ${mes}`)
+})
+//发布
+emitter.emit('test','world')
+```
+
+
 ### Linux请求
 - `curl -v https://v.qq.com/`
 
