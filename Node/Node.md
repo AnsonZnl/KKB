@@ -18,6 +18,54 @@
   - 安装nodemon：`npm i -g nodemon`
   - 使用nodemon：`nodemon index.js`
 
+### EventLoop
+> 一个循环 每次循环叫tick 每次循环的代码叫task
+- V8引擎单线程无法同时干两件事
+- 文件读取、网络IO缓慢具有不确定性
+- 要通过异步回调方式处理又称为异步IO
+- 先同步在异步，异步放入任务队里等同步完成后在执行，每次循环叫一个tick（process.nextTick）
+- 在JavaScript中，任务被分为两种
+  - 一种是宏任务（MacroTask）也叫Task。script的全部代码、setTimeout、setinterval、I/O、UI Rendering
+  - 一种是微任务（MicroTask）Process.next(Node 独有)、Primise、Object。observer
+```
+console.log('script start')
+
+async function async1() {
+  await async2()
+  console.log('async1 end')
+}
+async function async2() {
+  console.log('async2 end') 
+}
+async1()
+
+setTimeout(function() {
+  console.log('setTimeout')
+}, 0)
+
+new Promise(resolve => {
+  console.log('Promise')
+  resolve()
+})
+  .then(function() {
+    console.log('promise1')
+  })
+  .then(function() {
+    console.log('promise2')
+  })
+
+console.log('script end');
+/**
+分析结果：
+
+
+
+**/
+```
+参考：
+- [一次弄懂Event Loop（彻底解决此类面试问题）](https://zhuanlan.zhihu.com/p/55511602)
+- [阮一峰-什么是EventLoop](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)
+- [MDN-并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
 ### debug工具
 - `code runner` vsCode插件
 
