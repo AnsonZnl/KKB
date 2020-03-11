@@ -31,3 +31,9 @@ app.listen(3000,()=>{
 > mid1('Hello') -> mid2 -> mid3('World') -> mid1('!!') -> Hello World !!
 ![洋葱模型](https://image-static.segmentfault.com/289/215/2892151181-5ab48de7b5013)
 参考：[Koa 官方文档](https://koa.bootcss.com/#context)
+
+## 错误处理
+使用try..catch捕捉错误->抛出错误->处理错误
+- 中间件或者函数中出错 - 事件级别错误 if 处理.. else 向上抛出
+- Koa on.error() - 应用级别错误 if 处理.. else 向上抛出
+- Node throw  - 服务级别错误 if 处理.. else 中断服务
