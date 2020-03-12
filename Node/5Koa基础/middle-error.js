@@ -21,7 +21,7 @@ const err = async (ctx, next) => {
 }
 
 app.on('error', err => {
-    console.log('Koa级别错误', err.message)
+    console.log('全局错误错误', err.message)
     // Node 级别错误
     // throw err;
 })
@@ -39,7 +39,7 @@ const test = async (ctx, noxt) => {
 app.use(err)
 app.use(hello);
 app.use(test)
-
+//开始监听端口，等同于http.createServer(app.callback()).listen(3000);
 app.listen(3000, () => {
     console.log('server run http://localhost:3000')
 })
