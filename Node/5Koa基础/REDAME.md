@@ -89,3 +89,50 @@ app.listen(3000, ()=>{
     console.log('server running http://localhost:3000')
 })
 ```
+## 模板引擎
+- [参考](https://www.jianshu.com/p/e01e733218a3)
+- ejs
+- hbs
+- 模板语法部分没必要学，真正用到在学也不晚，先学关键部分
+- 重视SEO和首屏渲染的话 使用SSR不管是Vue 还是React都很成熟了
+```
+cosnt hbs = require('koa-hbs')
+app.use(hbs.middleware({
+    viewPath: __dirname + '/views',//视图根目录
+    defaultLayout: 'layout',//默认布局页面
+    partialsPath: __dirname + 'view/partials'//注册partial目录
+    disableCache: true//开发阶段 不缓存
+}))
+```
+
+## 静态服务
+```
+cosnt static = require('koa-static');
+app.use(static(__dirname + 'public'));
+//然后就可以访问public目录下的文件了
+//比如放一些css js img等等需要的静态文件
+```
+## Web Components
+- web 组件化 就像原生的浏览器支持Vue一般丝滑
+- [Web组件入门实例教程](http://www.ruanyifeng.com/blog/2019/08/web_components.html)
+- [MDN-Web_Components](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)
+## Linux 基础
+- 使用`ssh root@xx.xx.xx.xx`回车输入密码
+- 公钥
+生成公钥：ssh-keygen -t rsa -P ''
+- 查看公钥 
+cat xx公钥文件
+使用公钥，可以进行免密登录，比如github就可以使用ssh 进行免密登录推送代码等
+
+- 常用命令
+```
+cd             //进入目录
+ls             //显示目录下文件
+cat xxx.md     //查看
+tail xx.md     //尾查看
+tail -f xx.md  //一直在尾部查看 查看日志常用
+vi xx.md       //编辑
+:q             //退出编辑
+pwd            //查看当前所在路径
+
+```
