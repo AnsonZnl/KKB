@@ -1,8 +1,8 @@
 ## MongoDB
-菲关系型数据库
+> 非关系型数据库
 ## node连接MongoDB
+参考：[菜鸟教程，node.js连接MongoDB](https://www.runoob.com/nodejs/nodejs-mongodb.html)
 ### 使用mongodb
-参考[菜鸟教程，node.js连接MongoDB](https://www.runoob.com/nodejs/nodejs-mongodb.html)
 - 安装mongodb包`npm install mongodb`
 - package包的名字不可以和安装的包重名，比如我的包名是mongodb,那就不可以下载mongodb。
 - 创建的mongodb的集合，会自动加s.
