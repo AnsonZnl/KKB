@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input v-model="form.value" />
+        </div>
+        <div>
+            <button v-on:click="get">get</button>
+            <button v-on:click="getOne">getOne</button>
+            <button v-on:click="post">post</button>
+            <button v-on:click="put">put</button>
+            <button v-on:click="del">delete</button>
+        </div>
+        <div>
+            <button @click="logs=[]">Clear Log</button>
+        </div>
+        <!-- 日志 -->
+        <ul>
+            <li v-for="(log,idx) in logs" :key="idx">
+                {{ log }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        // 路由拦截
+        // axios.interceptors.request.use(
+        //     config => {
+        //         const token = window.localStorage.getItem("token");
+        //         if (token) {
+        //             // 判断是否存在token，如果存在的话，则每个http header都加上token
+        //             // Bearer是JWT的认证头部信息
+        //             config.headers.common["Authorization"] = "Bearer " + token;
+        //         }
+        //         return config;
+        //     },
+        //     err => {
+        //         return Promise.reject(err);
+        //     }
+        // );
+        // 添加默认请求地址
+        axios.defaults.baseURL = 'http://localhost:3000';
+        // 中间件？？
+        axios.interceptors.response.use(
+            response => {
+                app.logs.push(JSON.stringify(response.data))
+                return response;
+            },
+            err => {
+                app.logs.push(JSON.stringify(response.data));
+                return Promise.reject(err)
+            }
+        )
+        var app = new Vue({
+            el: "#app",
+            data: {
+                form: {
+                    id: 2,
+                    value: ""
+                },
+                logs: []
+            },
+            methods: {
+                async get() {
+                    const res = await axios.get("/users");
+                },
+                async getOne() {
+                    const res = await axios.get("/users?id=2");
+                },
+                async post() {
+                    const res = await axios.post('/users', this.form)
+                },
+                async put() {
+                    const res = await axios.put("/users", this.form);
+                },
+                async del() {
+                    const res = await axios.delete('/users/1')
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

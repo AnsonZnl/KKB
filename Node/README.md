@@ -1,7 +1,7 @@
 # Node.js
 [Node 官网](!http://nodejs.cn/)
 ## Node基础
-
+[老师上课代码](https://github.com/su37josephxia/kaikeba-code)
 ### 学习目标
 - 优秀的前端- 可以和后端有效沟通
 - 敏捷的全栈 - 快速开发全栈应用
@@ -99,9 +99,6 @@ emitter.on('test',(mes)=>{
 emitter.emit('test','world')
 ```
 
-
-### Linux请求
-- `curl -v https://v.qq.com/`
 
 ### mini-express
 ```
@@ -206,5 +203,7 @@ res.setHeader('Access-Control-Allow-Credentials', 'true');//跨域允许使用co
 - 使用ajax+轮询(前端使用定时器，一秒钟请求一次服务器数据)
 - 使用WebSocket，服务端可向客户端推送消息，优秀的库：socket.io
 
+
 ## bugList
+- Kibana数据分析es语法
 - 使用`npm init -y` 快速生成一个package.json文件
