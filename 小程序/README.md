@@ -1,7 +1,6 @@
 # 微信小程序
-
+完整代码-书架小程序：https://github.com/AnsonZnl/bookshelf
 开课吧视频链接：https://www.bilibili.com/video/av71365439?p=40
-
 微信小程序文档：https://developers.weixin.qq.com/miniprogram/dev/api/
 
 ## 小程序云开发

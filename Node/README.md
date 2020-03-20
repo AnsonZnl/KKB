@@ -1,7 +1,9 @@
 # Node.js
 [Node 官网](!http://nodejs.cn/)
+
 ## Node基础
 [老师上课代码](https://github.com/su37josephxia/kaikeba-code)
+
 ### 学习目标
 - 优秀的前端- 可以和后端有效沟通
 - 敏捷的全栈 - 快速开发全栈应用
@@ -27,7 +29,9 @@
 - 在JavaScript中，任务被分为两种
   - 一种是宏任务（MacroTask）也叫Task。script的全部代码、setTimeout、setinterval、I/O、UI Rendering
   - 一种是微任务（MicroTask）Process.next(Node 独有)、Primise、Object。observer
-```
+
+**演示**
+``` javascript
 console.log('script start')
 
 async function async1() {
@@ -55,19 +59,27 @@ new Promise(resolve => {
   })
 
 console.log('script end');
-/**
-分析结果：
-
-
+/** 分析结果
+script start
+async2 end
+Promise
+script end
+promise1
+promise2
+async1 end
+setTimeout
 
 **/
 ```
-参考：
+**我的理解**
+>整段script代码是一个宏任务，在执行宏任务的过程中会不断的有微任务加入到微任务队列中，当执行完一个宏任务后先看微任务队列里有没有微任务，如果有先把整队的微任务执行完，然后在执行下一个宏任务，如此以往形成event loop
+
+**参考：**
 - [一次弄懂Event Loop（彻底解决此类面试问题）](https://zhuanlan.zhihu.com/p/55511602)
 - [阮一峰-什么是EventLoop](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)
 - [MDN-并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
 ### debug工具
-- `code runner` vsCode插件
+- `code runner` VSCode插件
 
 ### 模块
 - 这块还有很多的概念不清晰，比如es6的模块和node的模块等，有时间多看看。
@@ -80,17 +92,19 @@ console.log('script end');
 ### events
 - [Node-Events参考文档](http://nodejs.cn/api/events.html)
 - [Node 模块之事件(events)详解](https://www.jianshu.com/p/152fddf0628c)
-events对象，又称为“事件触发器”.它是一种广泛用于异步编程的模式，是回调函数的事件化，又称“发布订阅模式”， events就是发布订阅模式的一个简单的实现。
+
+> events对象，又称为“事件触发器”.它是一种广泛用于异步编程的模式，是回调函数的事件化，又称“发布订阅模式”， events就是发布订阅模式的一个简单的实现。
 这个模块比前端浏览器中DOM模块要简单的多，没有冒泡，捕捉等事件传递的方法。
 它具有，addListener/on()、once()、removeListener()、removellListeners()和emit()等基本的事件监听模式的方法实现。
 Node中的对象模型就是我们常见的订阅发布模式，Node.js核心API都采用了异步事件的驱动，所有可能触发事件的对象都是一个继承自EventEmitter类的子类实例对象，简单来说，就是Node帮我们实现了一个订阅发布模式。
-我的理解：
+
+**我的理解：**
 前端浏览器的方法调用常用的大致分为两类
 - 来自页面的事件，如：click、input、change等
 - 使用ajax异步请求时候的异步调用，异步回调函数等。
 这些都是定义好的函数，然后通过这些操作去触发提前定义好的函数，和events如出一辙。
 例子：
-```
+``` javascript
 //订阅
 emitter.on('test',(mes)=>{
     consloe.log(`hello ${mes}`)
@@ -101,7 +115,7 @@ emitter.emit('test','world')
 
 
 ### mini-express
-```
+``` javascript
 const http = require('http');
 const url = require('url');
 const router = []
@@ -167,7 +181,7 @@ module.exports = function (){
  - 代理服务器，同源策略是针对的刘浏览器端，可以通过请求同源的服务器，然后使用同源服务器请求目标服务器，得到结果在返回前端。
  - CORS 全称是`Cross Origin Resource Share`-跨域资源共享，CORS是w3c规范，真正意义上解决了跨域，他需要对请求进行检查并对响应头做相应处理，从而实现跨域，通过后端添加响应头Header`Access-Contorl-Allow-Origin`和允许请求源地址，请求分为简单请求和复杂请求，简单请求get/post/head，复杂请求需要使用options请求先进行预检。
 *最推荐的是CORS*
-```
+``` javascript
 // CORS 
 res.setHeader('Content-type', 'application/json');//简单请求 时设置
 res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');//简单请求 时设置 允许的跨域的源
@@ -178,7 +192,7 @@ res.setHeader('Access-Control-Allow-Credentials', 'true');//跨域允许使用co
 ### 反向代理
 正向代理隐藏真实的客户端，反向代理隐藏真实的服务端。
 正向代理代理的对象是客户端，反向代理代理的对象是服务端
-[知乎-什么是反向代理？](https://www.zhihu.com/question/24723688)
+- [知乎-什么是反向代理？](https://www.zhihu.com/question/24723688)
 
 ### cookie
  1. 客户端请求服务端，服务端响应头设置cookie`res.setHeader('Set-Cookie','cookie=123')`
@@ -188,11 +202,11 @@ res.setHeader('Access-Control-Allow-Credentials', 'true');//跨域允许使用co
 跨域的情况下：服务器添加`res.setHeader('Access-Control-Allow-Credntials', 'true')`,前端ajax(axios)：`axios.defaults.withCredentials = true`
 
 ### 判断是否加上cookie
-*前端*
+**前端**
 - 在application中查看
 - 控制台使用`document.cookie`
 
-*后端*
+**后端**
 - 接受请求的时 打印请求头`console.log(req.headers.cookie)`
 
 ### 爬虫
@@ -202,7 +216,6 @@ res.setHeader('Access-Control-Allow-Credentials', 'true');//跨域允许使用co
 ### IM通讯系统
 - 使用ajax+轮询(前端使用定时器，一秒钟请求一次服务器数据)
 - 使用WebSocket，服务端可向客户端推送消息，优秀的库：socket.io
-
 
 ## bugList
 - Kibana数据分析es语法
