@@ -27,6 +27,12 @@ vi xx.md       # 编辑
 :q             # 退出编辑
 pwd            # 查看当前所在路径
 rm xxx         # 删除
+mv oldname newname # 重命名文件名
+rm # 撤销文件
+rmdir # 删除目录
+date # 得到当前日期和时间
+node index.js & # 尾部加& 后台执行该命令
+
 #  Ubuntu apt是包管理工具类似 npm 
 sudo apt install yum #安装yum
 sudo apt install nginx #安装Nginx

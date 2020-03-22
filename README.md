@@ -13,7 +13,8 @@
   - [koa2源码解析](https://github.com/AnsonZnl/KKB/blob/master/Node/9koa2%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/README.md)
   - [部署上线](https://github.com/AnsonZnl/KKB/blob/master/Node/10%E9%83%A8%E7%BD%B2/README.md)
   - [Liunx常用命令](https://github.com/AnsonZnl/KKB/blob/master/Node/10%E9%83%A8%E7%BD%B2/Linux.md)
-
+- Vue
+  - [vue 组件](https://github.com/AnsonZnl/KKB/blob/master/Vue/01vue%E7%BB%84%E4%BB%B6/README.md)
 
 ## 资料
 - 前端大梭: https://www.josephxia.com/
