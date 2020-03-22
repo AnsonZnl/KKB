@@ -1,3 +1,4 @@
 node_modules/
 package-lock.json
+# 课件/*
 *.zip

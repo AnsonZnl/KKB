@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .model{
+            border:1px solid black;
+            position: fixed;
+            width:300px;
+            height:300px;
+            top:20%;
+            left:50%;
+            margin-left:-150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginBtn">点我</div>
+
+    <script>
+        
+        var getSingle = function( fn ){
+   var result;
+   return function(){
+       return result || ( result = fn .apply(this, arguments ) );
+   } 
+};
+var createLoginLayer = function(){
+
+    var div = document.createElement( 'div' );
+    div.innerHTML = '我是登录浮窗';
+    div.className = 'model'
+    div.style.display = 'none';  
+    document.body.appendChild( div );
+
+    return div;
+};
+var createSingleLoginLayer = getSingle( createLoginLayer );
+document.getElementById( 'loginBtn' ).onclick = function(){ 
+    var loginLayer = createSingleLoginLayer(); 
+    loginLayer.style.display = 'block';
+};
+
+
+
+</script>
+</body>
+</html>
