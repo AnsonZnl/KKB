@@ -15,7 +15,8 @@
   - [部署上线](https://github.com/AnsonZnl/KKB/blob/master/Node/10%E9%83%A8%E7%BD%B2/README.md)
   - [Liunx常用命令](https://github.com/AnsonZnl/KKB/blob/master/Node/10%E9%83%A8%E7%BD%B2/Linux.md)
 - [Vue](https://github.com/AnsonZnl/KKB/tree/master/Vue/)
-  - [vue 组件](https://github.com/AnsonZnl/KKB/tree/master/Vue/01Vue%E7%BB%84%E4%BB%B6)
+  - [vue 组件化](https://github.com/AnsonZnl/KKB/tree/master/Vue/01Vue%E7%BB%84%E4%BB%B6)
+  - [vue-router](https://github.com/AnsonZnl/KKB/tree/master/Vue/02vue-router)
 
 ## 资料
 - 前端大梭: https://www.josephxia.com/
