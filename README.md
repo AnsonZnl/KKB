@@ -17,6 +17,8 @@
 - [Vue](https://github.com/AnsonZnl/KKB/tree/master/Vue/)
   - [vue 组件化](https://github.com/AnsonZnl/KKB/tree/master/Vue/01Vue%E7%BB%84%E4%BB%B6)
   - [vue-router](https://github.com/AnsonZnl/KKB/tree/master/Vue/02vue-router)
+  - [vuex](https://github.com/AnsonZnl/KKB/tree/master/Vue/03vuex)
+  - [vue-源码解析01](https://github.com/AnsonZnl/KKB/tree/master/Vue/04%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%901)
 
 ## 资料
 - 前端大梭: https://www.josephxia.com/
