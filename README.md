@@ -1,6 +1,7 @@
 # WEB全栈课程
 学习笔记，小可爱们记得先star在fork哦~(〃'▽'〃)
 - 9 期学习地址：https://www.bilibili.com/video/av71365439
+- 10期学习地址：https://www.bilibili.com/video/BV1q54y167sJ
 - 11期学习地址：https://www.bilibili.com/video/BV1YT4y1g762
 - 12 期学习地址：https://www.bilibili.com/video/av92753208
 
